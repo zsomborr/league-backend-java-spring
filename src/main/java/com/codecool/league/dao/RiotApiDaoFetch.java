@@ -14,4 +14,28 @@ public class RiotApiDaoFetch implements RiotApiDao{
         }
         return champions;
     }
+
+    @Override
+    public String getFreeChampions() {
+        String freeChampions = null;
+        try {
+            freeChampions = Util.getRiotApiJsonResponse("https://eun1.api.riotgames.com/lol/platform/v3/champion-rotations");
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return freeChampions;
+    }
+
+    @Override
+    public String getUserInfo(String userName) {
+        String usermatchdetail = "https://eun1.api.riotgames.com/lol/match/v4/matchlists/by-account/" + "userDetail.accountID";
+        String matchResult = "https://eun1.api.riotgames.com/lol/match/v4/matches/" + "userDetail.accountID";
+        String userDetail = null;
+        try {
+            userDetail = Util.getRiotApiJsonResponse("https://eun1.api.riotgames.com/lol/summoner/v4/summoners/by-name/"  + userName);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return userDetail;
+    }
 }

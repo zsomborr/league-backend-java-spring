@@ -16,4 +16,11 @@ public class RiotApiService {
         return riotApiDao.getAllChampion();
     }
 
+    public String getFreeChampions() {
+        return riotApiDao.getFreeChampions();
+    }
+
+    public String getUserInfo(String userName) {
+        return riotApiDao.getUserInfo(userName);
+    }
 }
