@@ -28,14 +28,34 @@ public class RiotApiDaoFetch implements RiotApiDao{
 
     @Override
     public String getUserInfo(String userName) {
-        String usermatchdetail = "https://eun1.api.riotgames.com/lol/match/v4/matchlists/by-account/" + "userDetail.accountID";
-        String matchResult = "https://eun1.api.riotgames.com/lol/match/v4/matches/" + "userDetail.accountID";
-        String userDetail = null;
+       String userDetail = null;
         try {
             userDetail = Util.getRiotApiJsonResponse("https://eun1.api.riotgames.com/lol/summoner/v4/summoners/by-name/"  + userName);
         } catch (Exception e) {
             e.printStackTrace();
         }
         return userDetail;
+    }
+
+    @Override
+    public String getMatchHistory(String accountId) {
+        String matchHistory = null;
+        try {
+            matchHistory = Util.getRiotApiJsonResponse("https://eun1.api.riotgames.com/lol/match/v4/matchlists/by-account/"  + accountId);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return matchHistory;
+    }
+
+    @Override
+    public String getMatchResult(String matchId) {
+        String matchDetail = null;
+        try {
+            matchDetail = Util.getRiotApiJsonResponse("https://eun1.api.riotgames.com/lol/match/v4/matches/"  + matchId);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return matchDetail;
     }
 }
