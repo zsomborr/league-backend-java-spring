@@ -39,8 +39,8 @@ public class RiotApiService {
 
         for (int i = 0; i < 10; i++) {
             JSONObject match = new JSONObject();
-            match.put("gameId", matchHistoryJSONArray.getJSONObject(i).getString("gameId"));
-            match.put("champion", matchHistoryJSONArray.getJSONObject(i).getString("champion"));
+            match.put("gameId", matchHistoryJSONArray.getJSONObject(i).getLong("gameId"));
+            match.put("champion", matchHistoryJSONArray.getJSONObject(i).getInt("champion"));
             reducedMatchHistoryArray.put(match);
         }
         this.matchHistory = reducedMatchHistoryArray;
@@ -53,20 +53,20 @@ public class RiotApiService {
 
         for (int i = 0; i < matchHistory.length(); i++) {
 
-            String matchDetail = riotApiDao.getMatchResult(matchHistory.getJSONObject(i).getString("gameId"));
+            String matchDetail = riotApiDao.getMatchResult(matchHistory.getJSONObject(i).getLong("gameId"));
             JSONObject matchDetailJSON = new JSONObject(matchDetail);
 
             JSONObject reducedMatchDetailJSON = new JSONObject();
-            reducedMatchDetailJSON.put("gameId", matchDetailJSON.getString("gameId"));
+            reducedMatchDetailJSON.put("gameId", matchDetailJSON.getLong("gameId"));
             reducedMatchDetailJSON.put("platformId", matchDetailJSON.getString("platformId"));
-            reducedMatchDetailJSON.put("gameDuration", matchDetailJSON.getString("gameDuration"));
+            reducedMatchDetailJSON.put("gameDuration", matchDetailJSON.getInt("gameDuration"));
             reducedMatchDetailJSON.put("gameMode", matchDetailJSON.getString("gameMode"));
 
             JSONArray teams = new JSONArray(matchDetailJSON.getJSONArray("teams"));
             JSONArray reducedTeams = new JSONArray();
             for (int j = 0; j < teams.length(); j++) {
                 JSONObject reducedTeamDetail = new JSONObject();
-                reducedTeamDetail.put("teamId", teams.getJSONObject(j).getString("teamId"));
+                reducedTeamDetail.put("teamId", teams.getJSONObject(j).getInt("teamId"));
                 reducedTeamDetail.put("win", teams.getJSONObject(j).getString("win"));
                 reducedTeams.put(reducedTeamDetail);
             }
