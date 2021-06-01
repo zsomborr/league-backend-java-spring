@@ -5,5 +5,5 @@ public interface RiotApiDao {
     String getFreeChampions();
     String getUserInfo(String userName);
     String getMatchHistory(String accountId);
-    String getMatchResult(String matchId);
+    String getMatchResult(Long matchId);
 }

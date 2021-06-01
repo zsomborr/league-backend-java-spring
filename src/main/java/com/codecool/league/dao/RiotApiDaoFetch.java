@@ -49,7 +49,7 @@ public class RiotApiDaoFetch implements RiotApiDao{
     }
 
     @Override
-    public String getMatchResult(String matchId) {
+    public String getMatchResult(Long matchId) {
         String matchDetail = null;
         try {
             matchDetail = Util.getRiotApiJsonResponse("https://eun1.api.riotgames.com/lol/match/v4/matches/"  + matchId);

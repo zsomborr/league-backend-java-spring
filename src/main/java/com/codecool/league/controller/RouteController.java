@@ -31,4 +31,13 @@ public class RouteController {
         return riotApiService.getUserInfo(userName);
     }
 
+    @GetMapping("/match")
+    public String getMatchHistory() {
+        return riotApiService.getMatchHistory();
+    }
+
+    @GetMapping("/results")
+    public String getMatchResults() {
+        return riotApiService.getMatchDetails();
+    }
 }

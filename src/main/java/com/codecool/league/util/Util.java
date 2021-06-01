@@ -9,7 +9,6 @@ import java.net.URL;
 public class Util {
 
     public static String getRiotApiJsonResponse(String urlString) throws IOException {
-        System.out.println(urlString);
         URL url = new URL(urlString);
         HttpURLConnection con = (HttpURLConnection) url.openConnection();
         con.setRequestMethod("GET");
