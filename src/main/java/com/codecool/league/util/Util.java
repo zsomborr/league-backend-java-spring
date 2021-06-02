@@ -12,7 +12,7 @@ public class Util {
         URL url = new URL(urlString);
         HttpURLConnection con = (HttpURLConnection) url.openConnection();
         con.setRequestMethod("GET");
-        con.setRequestProperty("X-Riot-Token" , "RGAPI-8ac710f5-444a-48e0-bd92-8ead9a93130a");
+        con.setRequestProperty("X-Riot-Token" , System.getenv("APIKEY"));
         BufferedReader in = new BufferedReader(
                 new InputStreamReader(con.getInputStream()));
         String inputLine;
