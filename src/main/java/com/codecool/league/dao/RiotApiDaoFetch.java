@@ -2,7 +2,7 @@ package com.codecool.league.dao;
 
 import com.codecool.league.util.Util;
 
-public class RiotApiDaoFetch implements RiotApiDao{
+public class RiotApiDaoFetch implements RiotApiDao {
 
     @Override
     public String getAllChampion() {
@@ -28,9 +28,9 @@ public class RiotApiDaoFetch implements RiotApiDao{
 
     @Override
     public String getUserInfo(String userName) {
-       String userDetail = null;
+        String userDetail = null;
         try {
-            userDetail = Util.getRiotApiJsonResponse("https://eun1.api.riotgames.com/lol/summoner/v4/summoners/by-name/"  + userName);
+            userDetail = Util.getRiotApiJsonResponse("https://eun1.api.riotgames.com/lol/summoner/v4/summoners/by-name/" + userName);
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -41,7 +41,7 @@ public class RiotApiDaoFetch implements RiotApiDao{
     public String getMatchHistory(String accountId) {
         String matchHistory = null;
         try {
-            matchHistory = Util.getRiotApiJsonResponse("https://eun1.api.riotgames.com/lol/match/v4/matchlists/by-account/"  + accountId);
+            matchHistory = Util.getRiotApiJsonResponse("https://eun1.api.riotgames.com/lol/match/v4/matchlists/by-account/" + accountId);
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -52,10 +52,11 @@ public class RiotApiDaoFetch implements RiotApiDao{
     public String getMatchResult(Long matchId) {
         String matchDetail = null;
         try {
-            matchDetail = Util.getRiotApiJsonResponse("https://eun1.api.riotgames.com/lol/match/v4/matches/"  + matchId);
+            matchDetail = Util.getRiotApiJsonResponse("https://eun1.api.riotgames.com/lol/match/v4/matches/" + matchId);
         } catch (Exception e) {
             e.printStackTrace();
         }
         return matchDetail;
     }
+
 }
