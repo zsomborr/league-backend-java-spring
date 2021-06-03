@@ -78,7 +78,18 @@ public class RiotApiService {
         return reducedMatchHistoryJSONArray.toString();
     }
 
-    public String getNews() {
-        return riotApiDao.getNews();
+    public String getNews(int pageNumber) {
+        String newestJson = riotApiDao.getNews(pageNumber);
+        JSONArray newestArray = new JSONArray(newestJson);
+        JSONArray reducedNewestArray = new JSONArray();
+        for (int i = 0; i < newestArray.length(); i++) {
+            JSONObject item = new JSONObject();
+            item.put("title", newestArray.getJSONObject(i).getString("title"));
+            item.put("user", newestArray.getJSONObject(i).getString("user"));
+            item.put("time_ago", newestArray.getJSONObject(i).getString("time_ago"));
+            item.put("url", newestArray.getJSONObject(i).getString("url"));
+            reducedNewestArray.put(item);
+        }
+        return reducedNewestArray.toString();
     }
 }

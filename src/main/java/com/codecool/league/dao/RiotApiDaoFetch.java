@@ -60,10 +60,10 @@ public class RiotApiDaoFetch implements RiotApiDao {
     }
 
     @Override
-    public String getNews() {
+    public String getNews(int pageNumber) {
         String news = null;
         try {
-            news = Util.getRiotApiJsonResponse("https://api.hnpwa.com/v0/newest/1.json");
+            news = Util.getRiotApiJsonResponse("https://api.hnpwa.com/v0/newest/"+ pageNumber +".json");
         } catch (Exception e) {
             e.printStackTrace();
         }
