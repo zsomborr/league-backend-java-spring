@@ -77,4 +77,8 @@ public class RiotApiService {
 
         return reducedMatchHistoryJSONArray.toString();
     }
+
+    public String getNews() {
+        return riotApiDao.getNews();
+    }
 }
