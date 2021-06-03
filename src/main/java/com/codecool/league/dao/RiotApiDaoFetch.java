@@ -59,4 +59,14 @@ public class RiotApiDaoFetch implements RiotApiDao {
         return matchDetail;
     }
 
+    @Override
+    public String getNews() {
+        String news = null;
+        try {
+            news = Util.getRiotApiJsonResponse("https://api.hnpwa.com/v0/newest/1.json");
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return news;
+    }
 }
