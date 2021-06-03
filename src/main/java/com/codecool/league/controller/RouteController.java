@@ -44,8 +44,8 @@ public class RouteController {
         return riotApiService.getMatchDetails();
     }
 
-    @GetMapping("/news")
-    public String getNews() {return riotApiService.getNews();}
+    @GetMapping("/news/{pageNumber}")
+    public String getNews(@PathVariable("pageNumber") int pageNumber) {return riotApiService.getNews(pageNumber);}
 
     @PostMapping("/login")
     public Boolean validateLogin(@RequestBody User user) {
