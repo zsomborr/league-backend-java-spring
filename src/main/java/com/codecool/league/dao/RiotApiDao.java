@@ -6,4 +6,5 @@ public interface RiotApiDao {
     String getUserInfo(String userName);
     String getMatchHistory(String accountId);
     String getMatchResult(Long matchId);
+    String getNews();
 }
