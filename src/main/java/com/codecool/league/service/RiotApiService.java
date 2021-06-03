@@ -84,6 +84,7 @@ public class RiotApiService {
         JSONArray reducedNewestArray = new JSONArray();
         for (int i = 0; i < newestArray.length(); i++) {
             JSONObject item = new JSONObject();
+            item.put("id", newestArray.getJSONObject(i).getInt("id"));
             item.put("title", newestArray.getJSONObject(i).getString("title"));
             item.put("user", newestArray.getJSONObject(i).getString("user"));
             item.put("time_ago", newestArray.getJSONObject(i).getString("time_ago"));
