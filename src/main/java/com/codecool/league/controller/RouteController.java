@@ -44,6 +44,9 @@ public class RouteController {
         return riotApiService.getMatchDetails();
     }
 
+    @GetMapping("/news")
+    public String getNews() {return riotApiService.getNews();}
+
     @PostMapping("/login")
     public Boolean validateLogin(@RequestBody User user) {
         return userService.validateLogin(user);
