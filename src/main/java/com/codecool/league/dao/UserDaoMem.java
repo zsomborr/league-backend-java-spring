@@ -1,6 +1,6 @@
 package com.codecool.league.dao;
 
-import com.codecool.league.Model.User;
+import com.codecool.league.model.UserModel;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 
@@ -14,13 +14,13 @@ import java.util.ArrayList;
 public class UserDaoMem implements UserDao{
 
     @Override
-    public Boolean validateUser(User user) {
+    public Boolean getUser(UserModel user) {
         try {
             String userList = new String(Files.readAllBytes(Paths.get("src/main/resources/static/userData.json")));
-            Type userListType = new TypeToken<ArrayList<User>>(){}.getType();
-            ArrayList<User> userModels = new Gson().fromJson(userList, userListType);
+            Type userListType = new TypeToken<ArrayList<UserModel>>(){}.getType();
+            ArrayList<UserModel> userModelModels = new Gson().fromJson(userList, userListType);
 
-            for (User userModel: userModels) {
+            for (UserModel userModel: userModelModels) {
                 if (userModel.getPassword().equals(user.getPassword()) &&
                         userModel.getEmail().equals(user.getEmail())) {
                     return true;
@@ -34,18 +34,18 @@ public class UserDaoMem implements UserDao{
     }
 
     @Override
-    public Boolean registerUser(User user) {
+    public Boolean addUser(UserModel userModel) {
         try {
             String userList = new String(Files.readAllBytes(Paths.get("src/main/resources/static/userData.json")));
-            ArrayList<User> userModels;
+            ArrayList<UserModel> userModelModels;
             if (!userList.equals("")) {
-                Type userListType = new TypeToken<ArrayList<User>>(){}.getType();
-                userModels = new Gson().fromJson(userList, userListType);
+                Type userListType = new TypeToken<ArrayList<UserModel>>(){}.getType();
+                userModelModels = new Gson().fromJson(userList, userListType);
             } else {
-                userModels = new ArrayList<>();
+                userModelModels = new ArrayList<>();
             }
-            userModels.add(user);
-            String updatedUserList = new Gson().toJson(userModels);
+            userModelModels.add(userModel);
+            String updatedUserList = new Gson().toJson(userModelModels);
 
             FileWriter writer = new FileWriter("src/main/resources/static/userData.json");
             writer.write(updatedUserList);
