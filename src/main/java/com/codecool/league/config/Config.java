@@ -1,10 +1,9 @@
 package com.codecool.league.config;
 
-import com.codecool.league.dao.RiotApiDao;
-import com.codecool.league.dao.RiotApiDaoFetch;
-import com.codecool.league.dao.UserDao;
-import com.codecool.league.dao.UserDaoMem;
-import com.codecool.league.service.RiotApiService;
+import com.codecool.league.dao.*;
+import com.codecool.league.service.ChampionsService;
+import com.codecool.league.service.NewsService;
+import com.codecool.league.service.RiotUserService;
 import com.codecool.league.service.UserService;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -13,13 +12,8 @@ import org.springframework.context.annotation.Configuration;
 public class Config {
 
     @Bean
-    public RiotApiDao riotApiDaoFetch() {
-        return new RiotApiDaoFetch();
-    }
-
-    @Bean
-    public RiotApiService riotApiService() {
-        return new RiotApiService(riotApiDaoFetch());
+    public NewsDao newsDao() {
+        return new NewsDaoFetch();
     }
 
     @Bean
@@ -28,7 +22,37 @@ public class Config {
     }
 
     @Bean
+    public RiotUserDetailsDao riotUserDetailsDao() {
+        return new RiotUserDetailsDaoFetch();
+    }
+
+    @Bean
+    public ChampionsDao championsDao() {
+        return new ChampionsDaoFetch();
+    }
+
+    @Bean
+    public FreeChampionsDao freeChampionsDao() {
+        return new FreeChampionsDaoFetch();
+    }
+
+    @Bean
     public UserService userService() {
         return new UserService(userDao());
+    }
+
+    @Bean
+    public ChampionsService championsService() {
+        return new ChampionsService(championsDao(), freeChampionsDao());
+    }
+
+    @Bean
+    public NewsService newsService() {
+        return new NewsService(newsDao());
+    }
+
+    @Bean
+    public RiotUserService riotUserService() {
+        return new RiotUserService(riotUserDetailsDao());
     }
 }
