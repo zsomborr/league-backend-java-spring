@@ -1,8 +1,8 @@
 package com.codecool.league.dao;
 
-import com.codecool.league.Model.User;
+import com.codecool.league.model.UserModel;
 
 public interface UserDao {
-    Boolean validateUser(User user);
-    Boolean registerUser(User user);
+    Boolean getUser(UserModel userModel);
+    Boolean addUser(UserModel userModel);
 }
