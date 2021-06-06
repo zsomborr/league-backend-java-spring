@@ -1,22 +1,18 @@
 package com.codecool.league.controller;
 
 import com.codecool.league.service.RiotApiService;
-import com.codecool.league.Model.User;
-import com.codecool.league.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 @CrossOrigin
 @RestController
-public class RouteController {
+public class RiotApiController {
 
     private final RiotApiService riotApiService;
-    private final UserService userService;
 
     @Autowired
-    public RouteController(RiotApiService riotApiService, UserService userService) {
+    public RiotApiController(RiotApiService riotApiService) {
         this.riotApiService = riotApiService;
-        this.userService = userService;
     }
 
     @GetMapping("/champions")
@@ -46,14 +42,4 @@ public class RouteController {
 
     @GetMapping("/news/{pageNumber}")
     public String getNews(@PathVariable("pageNumber") int pageNumber) {return riotApiService.getNews(pageNumber);}
-
-    @PostMapping("/login")
-    public Boolean validateLogin(@RequestBody User user) {
-        return userService.validateLogin(user);
-    }
-
-    @PostMapping("/register")
-    public Boolean registerUser(@RequestBody User user) {
-        return userService.registerUser(user);
-    }
 }
