@@ -24,7 +24,11 @@ public class ChampionsService {
     }
 
     public String getFreeChampions() {
-        return gson.toJson(freeChampionsDao.getFreeChampions().getFreeChampionIds());
+        return gson.toJson(freeChampionsDao.getFreeChampions());
+    }
+
+    public String getChampionsByTag(String tag) {
+        return gson.toJson(championsDao.getChampionsByTag(tag));
     }
 
 }
