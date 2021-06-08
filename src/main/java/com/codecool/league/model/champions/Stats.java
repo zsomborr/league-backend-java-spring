@@ -5,52 +5,52 @@ import com.google.gson.annotations.SerializedName;
 public class Stats{
 
 	@SerializedName("mpregen")
-	private int mpregen;
+	private double mpregen;
 
 	@SerializedName("attackdamageperlevel")
-	private int attackdamageperlevel;
+	private double attackdamageperlevel;
 
 	@SerializedName("mp")
-	private int mp;
+	private double mp;
 
 	@SerializedName("attackrange")
-	private int attackrange;
+	private double attackrange;
 
 	@SerializedName("hpperlevel")
-	private int hpperlevel;
+	private double hpperlevel;
 
 	@SerializedName("hp")
-	private int hp;
+	private double hp;
 
 	@SerializedName("hpregen")
-	private int hpregen;
+	private double hpregen;
 
 	@SerializedName("mpregenperlevel")
-	private int mpregenperlevel;
+	private double mpregenperlevel;
 
 	@SerializedName("spellblock")
-	private int spellblock;
+	private double spellblock;
 
 	@SerializedName("critperlevel")
-	private int critperlevel;
+	private double critperlevel;
 
 	@SerializedName("movespeed")
-	private int movespeed;
+	private double movespeed;
 
 	@SerializedName("mpperlevel")
-	private int mpperlevel;
+	private double mpperlevel;
 
 	@SerializedName("armor")
-	private int armor;
+	private double armor;
 
 	@SerializedName("armorperlevel")
 	private double armorperlevel;
 
 	@SerializedName("crit")
-	private int crit;
+	private double crit;
 
 	@SerializedName("attackdamage")
-	private int attackdamage;
+	private double attackdamage;
 
 	@SerializedName("attackspeed")
 	private double attackspeed;
@@ -62,109 +62,109 @@ public class Stats{
 	private double attackspeedperlevel;
 
 	@SerializedName("hpregenperlevel")
-	private int hpregenperlevel;
+	private double hpregenperlevel;
 
-	public void setMpregen(int mpregen){
+	public void setMpregen(double mpregen){
 		this.mpregen = mpregen;
 	}
 
-	public int getMpregen(){
+	public double getMpregen(){
 		return mpregen;
 	}
 
-	public void setAttackdamageperlevel(int attackdamageperlevel){
+	public void setAttackdamageperlevel(double attackdamageperlevel){
 		this.attackdamageperlevel = attackdamageperlevel;
 	}
 
-	public int getAttackdamageperlevel(){
+	public double getAttackdamageperlevel(){
 		return attackdamageperlevel;
 	}
 
-	public void setMp(int mp){
+	public void setMp(double mp){
 		this.mp = mp;
 	}
 
-	public int getMp(){
+	public double getMp(){
 		return mp;
 	}
 
-	public void setAttackrange(int attackrange){
+	public void setAttackrange(double attackrange){
 		this.attackrange = attackrange;
 	}
 
-	public int getAttackrange(){
+	public double getAttackrange(){
 		return attackrange;
 	}
 
-	public void setHpperlevel(int hpperlevel){
+	public void setHpperlevel(double hpperlevel){
 		this.hpperlevel = hpperlevel;
 	}
 
-	public int getHpperlevel(){
+	public double getHpperlevel(){
 		return hpperlevel;
 	}
 
-	public void setHp(int hp){
+	public void setHp(double hp){
 		this.hp = hp;
 	}
 
-	public int getHp(){
+	public double getHp(){
 		return hp;
 	}
 
-	public void setHpregen(int hpregen){
+	public void setHpregen(double hpregen){
 		this.hpregen = hpregen;
 	}
 
-	public int getHpregen(){
+	public double getHpregen(){
 		return hpregen;
 	}
 
-	public void setMpregenperlevel(int mpregenperlevel){
+	public void setMpregenperlevel(double mpregenperlevel){
 		this.mpregenperlevel = mpregenperlevel;
 	}
 
-	public int getMpregenperlevel(){
+	public double getMpregenperlevel(){
 		return mpregenperlevel;
 	}
 
-	public void setSpellblock(int spellblock){
+	public void setSpellblock(double spellblock){
 		this.spellblock = spellblock;
 	}
 
-	public int getSpellblock(){
+	public double getSpellblock(){
 		return spellblock;
 	}
 
-	public void setCritperlevel(int critperlevel){
+	public void setCritperlevel(double critperlevel){
 		this.critperlevel = critperlevel;
 	}
 
-	public int getCritperlevel(){
+	public double getCritperlevel(){
 		return critperlevel;
 	}
 
-	public void setMovespeed(int movespeed){
+	public void setMovespeed(double movespeed){
 		this.movespeed = movespeed;
 	}
 
-	public int getMovespeed(){
+	public double getMovespeed(){
 		return movespeed;
 	}
 
-	public void setMpperlevel(int mpperlevel){
+	public void setMpperlevel(double mpperlevel){
 		this.mpperlevel = mpperlevel;
 	}
 
-	public int getMpperlevel(){
+	public double getMpperlevel(){
 		return mpperlevel;
 	}
 
-	public void setArmor(int armor){
+	public void setArmor(double armor){
 		this.armor = armor;
 	}
 
-	public int getArmor(){
+	public double getArmor(){
 		return armor;
 	}
 
@@ -176,19 +176,19 @@ public class Stats{
 		return armorperlevel;
 	}
 
-	public void setCrit(int crit){
+	public void setCrit(double crit){
 		this.crit = crit;
 	}
 
-	public int getCrit(){
+	public double getCrit(){
 		return crit;
 	}
 
-	public void setAttackdamage(int attackdamage){
+	public void setAttackdamage(double attackdamage){
 		this.attackdamage = attackdamage;
 	}
 
-	public int getAttackdamage(){
+	public double getAttackdamage(){
 		return attackdamage;
 	}
 
@@ -216,11 +216,11 @@ public class Stats{
 		return attackspeedperlevel;
 	}
 
-	public void setHpregenperlevel(int hpregenperlevel){
+	public void setHpregenperlevel(double hpregenperlevel){
 		this.hpregenperlevel = hpregenperlevel;
 	}
 
-	public int getHpregenperlevel(){
+	public double getHpregenperlevel(){
 		return hpregenperlevel;
 	}
 }
