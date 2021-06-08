@@ -1,4 +1,4 @@
-package com.codecool.league.model.champions;
+package com.codecool.league.model.championsListTest;
 
 import java.util.List;
 
