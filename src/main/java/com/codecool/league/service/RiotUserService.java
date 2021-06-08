@@ -1,9 +1,10 @@
 package com.codecool.league.service;
 
 import com.codecool.league.dao.RiotUserDetailsDao;
-import com.codecool.league.model.MatchHistoryModel;
-import com.codecool.league.model.RiotUserDetailModel;
-import com.codecool.league.model.matchResults.MatchResultModel;
+import com.codecool.league.model.riotUser.matchHistory.MatchHistoryModel;
+import com.codecool.league.model.riotUser.matchHistory.MatchModel;
+import com.codecool.league.model.riotUser.RiotUserDetailModel;
+import com.codecool.league.model.riotUser.matchResults.MatchResultModel;
 import com.google.gson.Gson;
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -14,7 +15,7 @@ public class RiotUserService {
 
     RiotUserDetailsDao riotUserDetailsDao;
     RiotUserDetailModel user;
-    List<MatchHistoryModel> matchHistory;
+    MatchHistoryModel matchHistory;
     Gson gson;
 
 
@@ -22,7 +23,6 @@ public class RiotUserService {
     public RiotUserService(RiotUserDetailsDao riotUserDetailsDao) {
         this.riotUserDetailsDao = riotUserDetailsDao;
         this.gson = new Gson();
-        matchHistory = new ArrayList<>();
     }
 
     public String getUserInfo(String userName) {
@@ -31,16 +31,16 @@ public class RiotUserService {
     }
 
     public String getMatchHistory() {
-        List<MatchHistoryModel> matchHistory = riotUserDetailsDao.getMatchHistory(user.getAccountId());
+        MatchHistoryModel matchHistory = riotUserDetailsDao.getMatchHistory(user.getAccountId());
         this.matchHistory = matchHistory;
-        return gson.toJson(matchHistory);
+        return gson.toJson(matchHistory.getMatches());
     }
 
     public String getMatchDetails() {
         //TODO: check for user's team
         List<MatchResultModel> matchResultModels = new ArrayList<>();
-        for (MatchHistoryModel matchHistoryModel : matchHistory) {
-            matchResultModels.add(riotUserDetailsDao.getMatchResult(matchHistoryModel.getGameId()));
+        for (MatchModel matchModel : matchHistory.getMatches()) {
+            matchResultModels.add(riotUserDetailsDao.getMatchResult(matchModel.getGameId()));
         }
         return gson.toJson(matchResultModels);
     }
