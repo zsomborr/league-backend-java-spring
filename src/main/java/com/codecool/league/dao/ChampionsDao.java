@@ -1,11 +1,12 @@
 package com.codecool.league.dao;
 
-import com.codecool.league.model.champions.ChampionModel;
+import com.codecool.league.model.champions.ChampionsModel;
+import com.codecool.league.model.championsListTest.ChampionModel;
 
 import java.util.List;
 
 public interface ChampionsDao {
-    List<ChampionModel> getAllChampion();
-    List<ChampionModel>  getChampionByTag(String tag);
+    ChampionsModel getAllChampion();
+    List<ChampionModel>  getChampionsByTag(String tag);
 
 }
