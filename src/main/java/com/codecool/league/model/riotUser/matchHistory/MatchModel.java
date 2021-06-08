@@ -1,8 +1,8 @@
-package com.codecool.league.model;
+package com.codecool.league.model.riotUser.matchHistory;
 
 import com.google.gson.annotations.SerializedName;
 
-public class MatchHistoryModel {
+public class MatchModel {
 
 	@SerializedName("gameId")
 	private long gameId;

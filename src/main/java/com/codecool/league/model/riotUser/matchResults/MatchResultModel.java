@@ -1,4 +1,4 @@
-package com.codecool.league.model.matchResults;
+package com.codecool.league.model.riotUser.matchResults;
 
 import java.util.List;
 
