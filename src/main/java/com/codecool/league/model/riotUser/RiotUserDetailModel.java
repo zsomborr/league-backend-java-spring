@@ -1,4 +1,4 @@
-package com.codecool.league.model;
+package com.codecool.league.model.riotUser;
 
 import com.google.gson.annotations.SerializedName;
 
