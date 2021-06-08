@@ -24,4 +24,7 @@ public class ChampionsController {
     public String getFreeChampions() {
         return championsService.getFreeChampions();
     }
+
+    @GetMapping("/champions/{tag}")
+    public String getChampionsByTag(@PathVariable("tag") String tag) { return "";}
 }
