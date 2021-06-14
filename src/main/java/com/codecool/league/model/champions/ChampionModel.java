@@ -1,16 +1,10 @@
-package com.codecool.league.model.champions.champion;
+package com.codecool.league.model.champions;
 
 import java.util.List;
 
-import com.codecool.league.model.champions.Image;
-import com.codecool.league.model.champions.Info;
-import com.codecool.league.model.champions.Stats;
 import com.google.gson.annotations.SerializedName;
 
-public class Vladimir{
-
-	@SerializedName("image")
-	private Image image;
+public class ChampionModel {
 
 	@SerializedName("stats")
 	private Stats stats;
@@ -41,14 +35,6 @@ public class Vladimir{
 
 	@SerializedName("tags")
 	private List<String> tags;
-
-	public void setImage(Image image){
-		this.image = image;
-	}
-
-	public Image getImage(){
-		return image;
-	}
 
 	public void setStats(Stats stats){
 		this.stats = stats;
