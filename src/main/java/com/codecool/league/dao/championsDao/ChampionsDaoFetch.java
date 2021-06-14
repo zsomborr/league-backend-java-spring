@@ -1,12 +1,9 @@
 package com.codecool.league.dao.championsDao;
 
-import com.codecool.league.dao.championsDao.ChampionsDao;
 import com.codecool.league.model.champions.ChampionsDataModel;
 import com.codecool.league.model.champions.ChampionModel;
 import com.codecool.league.util.Util;
 import com.google.gson.Gson;
-import org.json.JSONArray;
-import org.json.JSONObject;
 
 import java.io.IOException;
 import java.util.*;
@@ -29,31 +26,20 @@ public class ChampionsDaoFetch implements ChampionsDao {
     }
 
     private ChampionsDataModel createChampions(String championList) {
-        ChampionsDataModel champions = new ChampionsDataModel();
-        JSONObject championsJSON = new JSONObject(championList);
-        var championsDataJSON = championsJSON.getJSONObject("data");
-        Iterator<String> x = championsDataJSON.keys();
-        JSONArray jsonArray = new JSONArray();
-        while (x.hasNext()){
-            String key = x.next();
-            jsonArray.put(championsDataJSON.get(key));
-            ChampionModel championModel = new  Gson().fromJson(championsDataJSON.get(key).toString(), ChampionModel.class);
-            champions.putInSet(championModel);
-        }
-        return champions;
+        return new  Gson().fromJson(championList , ChampionsDataModel.class);
     }
 
     @Override
     public ChampionsDataModel getChampionsByTag(String tag) {
-        Set<ChampionModel> filteredChampions;
+        Map<String, ChampionModel> filteredChampions;
         ChampionsDataModel champions = new ChampionsDataModel();
         try {
             String championList = fetchChampions();
             champions = createChampions(championList);
-            filteredChampions = champions.getChampionModels().stream()
-                    .filter(championModel -> championModel.getTags().contains(tag))
-            .collect(Collectors.toSet());
-            champions.setChampionModels(filteredChampions);
+            filteredChampions = champions.getData().entrySet().stream()
+                    .filter(championModel -> championModel.getValue().getTags().contains(tag))
+            .collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue));
+            champions.setData(filteredChampions);
         } catch (Exception e) {
             e.printStackTrace();
         }
