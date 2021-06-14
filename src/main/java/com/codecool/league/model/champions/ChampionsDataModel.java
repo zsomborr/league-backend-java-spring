@@ -1,21 +1,55 @@
 package com.codecool.league.model.champions;
 
+import com.google.gson.annotations.SerializedName;
+
 import java.util.LinkedHashSet;
+import java.util.Map;
 import java.util.Set;
 
 public class ChampionsDataModel {
 
-	private Set<ChampionModel> championModels = new LinkedHashSet<>();
+	@SerializedName("type")
+	public String type;
 
-	public void putInSet(ChampionModel championModel) {
-		championModels.add(championModel);
+	@SerializedName("format")
+	public String format;
+
+	@SerializedName("varsion")
+	public String version;
+
+	@SerializedName("data")
+	public Map<String, ChampionModel> data;
+
+	public String getType() {
+		return type;
 	}
 
-	public Set<ChampionModel> getChampionModels() {
-		return championModels;
+	public void setType(String type) {
+		this.type = type;
 	}
 
-	public void setChampionModels(Set<ChampionModel> championModels) {
-		this.championModels = championModels;
+	public String getFormat() {
+		return format;
 	}
+
+	public void setFormat(String format) {
+		this.format = format;
+	}
+
+	public String getVersion() {
+		return version;
+	}
+
+	public void setVersion(String version) {
+		this.version = version;
+	}
+
+	public Map<String, ChampionModel> getData() {
+		return data;
+	}
+
+	public void setData(Map<String, ChampionModel> data) {
+		this.data = data;
+	}
+
 }
