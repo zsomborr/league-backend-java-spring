@@ -36,7 +36,7 @@ public class ChampionModel {
 	@SerializedName("tags")
 	private List<String> tags;
 
-	private Boolean free;
+	private Boolean free = false;
 
 	public void setFree(Boolean free) {
 		this.free = free;

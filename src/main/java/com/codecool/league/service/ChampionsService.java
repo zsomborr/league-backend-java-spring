@@ -26,14 +26,15 @@ public class ChampionsService {
 //                .forEach((key, champion) -> {
 //                    champion.setFree(freeChampionIds.contains(Integer.parseInt(champion.getKey())));
 //                });
-        championsDao.getAllChampion()
+        ChampionsDataModel allChampion = championsDao.getAllChampion();
+        allChampion
                 .getData()
                 .entrySet()
                 .stream()
                 .filter(champion -> freeChampionIds.contains(Integer.parseInt(champion.getValue().getKey())))
                 .forEach(champion -> champion.getValue().setFree(true));
 
-        return championsDao.getAllChampion();
+        return allChampion;
     }
 
     public ChampionsDataModel getChampionsByTag(String tag) {
