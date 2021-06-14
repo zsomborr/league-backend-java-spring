@@ -2,32 +2,42 @@ package com.codecool.league.service;
 
 import com.codecool.league.dao.championsDao.ChampionsDao;
 import com.codecool.league.dao.freeChampionsDao.FreeChampionsDao;
-import com.google.gson.Gson;
+import com.codecool.league.model.champions.ChampionModel;
+import com.codecool.league.model.champions.ChampionsDataModel;
 import org.springframework.beans.factory.annotation.Autowired;
+
+import java.util.List;
 
 public class ChampionsService {
 
     ChampionsDao championsDao;
     FreeChampionsDao freeChampionsDao;
-    Gson gson;
 
     @Autowired
     public ChampionsService(ChampionsDao championsDao, FreeChampionsDao freeChampionsDao) {
         this.championsDao = championsDao;
         this.freeChampionsDao = freeChampionsDao;
-        this.gson = new Gson();
     }
 
-    public String getAllChampion() {
-        return gson.toJson(championsDao.getAllChampion());
+    public ChampionsDataModel getAllChampion() {
+        List<Integer> freeChampionIds = freeChampionsDao.getFreeChampions().getFreeChampionIds();
+//        championsDao.getAllChampion()
+//                .getData()
+//                .forEach((key, champion) -> {
+//                    champion.setFree(freeChampionIds.contains(Integer.parseInt(champion.getKey())));
+//                });
+        championsDao.getAllChampion()
+                .getData()
+                .entrySet()
+                .stream()
+                .filter(champion -> freeChampionIds.contains(Integer.parseInt(champion.getValue().getKey())))
+                .forEach(champion -> champion.getValue().setFree(true));
+
+        return championsDao.getAllChampion();
     }
 
-    public String getFreeChampions() {
-        return gson.toJson(freeChampionsDao.getFreeChampions());
-    }
-
-    public String getChampionsByTag(String tag) {
-        return gson.toJson(championsDao.getChampionsByTag(tag));
+    public ChampionsDataModel getChampionsByTag(String tag) {
+        return championsDao.getChampionsByTag(tag);
     }
 
 }
