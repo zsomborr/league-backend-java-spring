@@ -1,6 +1,7 @@
 package com.codecool.league.controller;
 
 import com.codecool.league.service.NewsService;
+import com.google.gson.Gson;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -12,14 +13,16 @@ import org.springframework.web.bind.annotation.RestController;
 public class NewsController {
 
     private final NewsService newsService;
+    private Gson gson;
 
     @Autowired
     public NewsController(NewsService newsService) {
         this.newsService = newsService;
+        this.gson = new Gson();
     }
 
 
     @GetMapping("/news/{pageNumber}")
-    public String getNews(@PathVariable("pageNumber") int pageNumber) {return newsService.getNews(pageNumber);}
+    public String getNews(@PathVariable("pageNumber") int pageNumber) {return gson.toJson(newsService.getNews(pageNumber));}
 
 }
