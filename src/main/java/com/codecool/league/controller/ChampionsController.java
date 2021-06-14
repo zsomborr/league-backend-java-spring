@@ -26,5 +26,7 @@ public class ChampionsController {
     }
 
     @GetMapping("/champions/{tag}")
-    public String getChampionsByTag(@PathVariable("tag") String tag) { return "";}
+    public String getChampionsByTag(@PathVariable("tag") String tag) {
+        return championsService.getChampionsByTag(tag);
+        }
 }
