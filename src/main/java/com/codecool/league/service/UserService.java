@@ -1,7 +1,7 @@
 package com.codecool.league.service;
 
-import com.codecool.league.model.UserModel;
-import com.codecool.league.dao.UserDao;
+import com.codecool.league.model.user.UserModel;
+import com.codecool.league.dao.userDao.UserDao;
 import org.springframework.beans.factory.annotation.Autowired;
 
 public class UserService {

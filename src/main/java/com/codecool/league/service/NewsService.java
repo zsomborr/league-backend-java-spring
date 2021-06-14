@@ -1,6 +1,6 @@
 package com.codecool.league.service;
 
-import com.codecool.league.dao.NewsDao;
+import com.codecool.league.dao.newsDao.NewsDao;
 import com.google.gson.Gson;
 import org.springframework.beans.factory.annotation.Autowired;
 

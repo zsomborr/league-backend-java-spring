@@ -1,6 +1,6 @@
-package com.codecool.league.dao;
+package com.codecool.league.dao.freeChampionsDao;
 
-import com.codecool.league.model.FreeChampionsModel;
+import com.codecool.league.model.freeChampions.FreeChampionsModel;
 import com.codecool.league.util.Util;
 import com.google.gson.Gson;
 

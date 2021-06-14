@@ -1,4 +1,4 @@
-package com.codecool.league.model;
+package com.codecool.league.model.freeChampions;
 
 import java.util.List;
 import com.google.gson.annotations.SerializedName;
