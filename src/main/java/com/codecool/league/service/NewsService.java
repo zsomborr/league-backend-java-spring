@@ -1,8 +1,10 @@
 package com.codecool.league.service;
 
 import com.codecool.league.dao.newsDao.NewsDao;
-import com.google.gson.Gson;
+import com.codecool.league.model.news.NewsModel;
 import org.springframework.beans.factory.annotation.Autowired;
+
+import java.util.List;
 
 public class NewsService {
 
@@ -14,7 +16,7 @@ public class NewsService {
         this.newsDao = newsDao;
     }
 
-    public String getNews(int pageNumber) {
-        return new Gson().toJson(newsDao.getNews(pageNumber));
+    public List<NewsModel> getNews(int pageNumber) {
+        return newsDao.getNews(pageNumber);
     }
 }
