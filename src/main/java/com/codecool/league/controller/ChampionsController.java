@@ -20,9 +20,6 @@ public class ChampionsController {
 
     @GetMapping("/champions")
     public String getAllChampion() {
-        championsService.getAllChampion().getData().forEach((key, champion) -> {
-            System.out.println(champion.isFree());
-        });
         return gson.toJson(championsService.getAllChampion());
     }
 
