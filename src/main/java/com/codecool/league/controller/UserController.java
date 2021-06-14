@@ -1,6 +1,6 @@
 package com.codecool.league.controller;
 
-import com.codecool.league.model.UserModel;
+import com.codecool.league.model.user.UserModel;
 import com.codecool.league.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;

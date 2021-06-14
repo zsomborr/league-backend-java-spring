@@ -1,6 +1,6 @@
-package com.codecool.league.dao;
+package com.codecool.league.dao.userDao;
 
-import com.codecool.league.model.UserModel;
+import com.codecool.league.model.user.UserModel;
 
 public interface UserDao {
     Boolean getUser(UserModel userModel);

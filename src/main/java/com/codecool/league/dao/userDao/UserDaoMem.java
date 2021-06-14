@@ -1,6 +1,6 @@
-package com.codecool.league.dao;
+package com.codecool.league.dao.userDao;
 
-import com.codecool.league.model.UserModel;
+import com.codecool.league.model.user.UserModel;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 
@@ -11,7 +11,7 @@ import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.ArrayList;
 
-public class UserDaoMem implements UserDao{
+public class UserDaoMem implements UserDao {
 
     @Override
     public Boolean getUser(UserModel user) {

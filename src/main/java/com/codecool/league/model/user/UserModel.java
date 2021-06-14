@@ -1,4 +1,4 @@
-package com.codecool.league.model;
+package com.codecool.league.model.user;
 
 public class UserModel {
     private String email;

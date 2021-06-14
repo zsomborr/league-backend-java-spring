@@ -1,16 +1,13 @@
-package com.codecool.league.dao;
+package com.codecool.league.dao.riotUserDetailsDao;
 
+import com.codecool.league.dao.riotUserDetailsDao.RiotUserDetailsDao;
 import com.codecool.league.model.riotUser.matchHistory.MatchHistoryModel;
 import com.codecool.league.model.riotUser.RiotUserDetailModel;
 import com.codecool.league.model.riotUser.matchResults.MatchResultModel;
 import com.codecool.league.util.Util;
 import com.google.gson.Gson;
-import com.google.gson.reflect.TypeToken;
 
-import java.lang.reflect.Type;
-import java.util.ArrayList;
-
-public class RiotUserDetailsDaoFetch implements RiotUserDetailsDao{
+public class RiotUserDetailsDaoFetch implements RiotUserDetailsDao {
     @Override
     public RiotUserDetailModel getUserInfo(String userName) {
         RiotUserDetailModel userDetail = null;

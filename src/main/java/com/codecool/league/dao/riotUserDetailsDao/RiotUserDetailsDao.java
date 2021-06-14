@@ -1,4 +1,4 @@
-package com.codecool.league.dao;
+package com.codecool.league.dao.riotUserDetailsDao;
 
 import com.codecool.league.model.riotUser.matchHistory.MatchHistoryModel;
 import com.codecool.league.model.riotUser.RiotUserDetailModel;

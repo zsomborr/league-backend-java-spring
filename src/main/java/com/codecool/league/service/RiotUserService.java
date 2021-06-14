@@ -1,6 +1,6 @@
 package com.codecool.league.service;
 
-import com.codecool.league.dao.RiotUserDetailsDao;
+import com.codecool.league.dao.riotUserDetailsDao.RiotUserDetailsDao;
 import com.codecool.league.model.riotUser.matchHistory.MatchHistoryModel;
 import com.codecool.league.model.riotUser.matchHistory.MatchModel;
 import com.codecool.league.model.riotUser.RiotUserDetailModel;

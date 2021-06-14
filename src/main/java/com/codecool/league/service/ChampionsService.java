@@ -1,7 +1,7 @@
 package com.codecool.league.service;
 
-import com.codecool.league.dao.ChampionsDao;
-import com.codecool.league.dao.FreeChampionsDao;
+import com.codecool.league.dao.championsDao.ChampionsDao;
+import com.codecool.league.dao.freeChampionsDao.FreeChampionsDao;
 import com.google.gson.Gson;
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -10,7 +10,6 @@ public class ChampionsService {
     ChampionsDao championsDao;
     FreeChampionsDao freeChampionsDao;
     Gson gson;
-
 
     @Autowired
     public ChampionsService(ChampionsDao championsDao, FreeChampionsDao freeChampionsDao) {

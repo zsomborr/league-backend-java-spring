@@ -1,6 +1,6 @@
-package com.codecool.league.dao;
+package com.codecool.league.dao.newsDao;
 
-import com.codecool.league.model.NewsModel;
+import com.codecool.league.model.news.NewsModel;
 import com.codecool.league.util.Util;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
@@ -9,7 +9,7 @@ import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.List;
 
-public class NewsDaoFetch implements NewsDao{
+public class NewsDaoFetch implements NewsDao {
 
     @Override
     public List<NewsModel> getNews(int pageNumber) {

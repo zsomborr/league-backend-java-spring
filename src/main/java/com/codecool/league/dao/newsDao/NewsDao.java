@@ -1,6 +1,6 @@
-package com.codecool.league.dao;
+package com.codecool.league.dao.newsDao;
 
-import com.codecool.league.model.NewsModel;
+import com.codecool.league.model.news.NewsModel;
 import java.util.List;
 
 public interface NewsDao {
