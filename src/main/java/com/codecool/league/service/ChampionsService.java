@@ -2,6 +2,7 @@ package com.codecool.league.service;
 
 import com.codecool.league.dao.championsDao.ChampionsDao;
 import com.codecool.league.dao.freeChampionsDao.FreeChampionsDao;
+import com.codecool.league.model.champions.ChampionModel;
 import com.codecool.league.model.champions.ChampionsDataModel;
 import org.springframework.beans.factory.annotation.Autowired;
 
