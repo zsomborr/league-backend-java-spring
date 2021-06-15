@@ -6,11 +6,14 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import javax.persistence.*;
+
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-public class Info{
+@Embeddable
+public class Info {
 
 	@SerializedName("magic")
 	private int magic;
