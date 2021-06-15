@@ -3,7 +3,15 @@ package com.codecool.league.model.riotUser.matchResults;
 import java.util.List;
 
 import com.google.gson.annotations.SerializedName;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
+@Builder
 public class MatchResultModel{
 
 	@SerializedName("gameId")
@@ -17,36 +25,4 @@ public class MatchResultModel{
 
 	@SerializedName("gameMode")
 	private String gameMode;
-
-	public void setGameId(long gameId){
-		this.gameId = gameId;
-	}
-
-	public long getGameId(){
-		return gameId;
-	}
-
-	public void setGameDuration(int gameDuration){
-		this.gameDuration = gameDuration;
-	}
-
-	public int getGameDuration(){
-		return gameDuration;
-	}
-
-	public void setTeams(List<Teams> teams){
-		this.teams = teams;
-	}
-
-	public List<Teams> getTeams(){
-		return teams;
-	}
-
-	public void setGameMode(String gameMode){
-		this.gameMode = gameMode;
-	}
-
-	public String getGameMode(){
-		return gameMode;
-	}
 }

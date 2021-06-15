@@ -3,7 +3,15 @@ package com.codecool.league.model.champions;
 import java.util.List;
 
 import com.google.gson.annotations.SerializedName;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
+@Builder
 public class ChampionModel {
 
 	@SerializedName("stats")
@@ -37,92 +45,4 @@ public class ChampionModel {
 	private List<String> tags;
 
 	private Boolean free = false;
-
-	public void setFree(Boolean free) {
-		this.free = free;
-	}
-
-	public Boolean isFree() {
-		return this.free;
-	}
-
-	public void setStats(Stats stats){
-		this.stats = stats;
-	}
-
-	public Stats getStats(){
-		return stats;
-	}
-
-	public void setPartype(String partype){
-		this.partype = partype;
-	}
-
-	public String getPartype(){
-		return partype;
-	}
-
-	public void setName(String name){
-		this.name = name;
-	}
-
-	public String getName(){
-		return name;
-	}
-
-	public void setId(String id){
-		this.id = id;
-	}
-
-	public String getId(){
-		return id;
-	}
-
-	public void setTitle(String title){
-		this.title = title;
-	}
-
-	public String getTitle(){
-		return title;
-	}
-
-	public void setBlurb(String blurb){
-		this.blurb = blurb;
-	}
-
-	public String getBlurb(){
-		return blurb;
-	}
-
-	public void setVersion(String version){
-		this.version = version;
-	}
-
-	public String getVersion(){
-		return version;
-	}
-
-	public void setKey(String key){
-		this.key = key;
-	}
-
-	public String getKey(){
-		return key;
-	}
-
-	public void setInfo(Info info){
-		this.info = info;
-	}
-
-	public Info getInfo(){
-		return info;
-	}
-
-	public void setTags(List<String> tags){
-		this.tags = tags;
-	}
-
-	public List<String> getTags(){
-		return tags;
-	}
 }

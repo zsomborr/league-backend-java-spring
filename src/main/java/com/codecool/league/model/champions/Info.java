@@ -1,7 +1,15 @@
 package com.codecool.league.model.champions;
 
 import com.google.gson.annotations.SerializedName;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
+@Builder
 public class Info{
 
 	@SerializedName("magic")
@@ -15,36 +23,4 @@ public class Info{
 
 	@SerializedName("attack")
 	private int attack;
-
-	public void setMagic(int magic){
-		this.magic = magic;
-	}
-
-	public int getMagic(){
-		return magic;
-	}
-
-	public void setDifficulty(int difficulty){
-		this.difficulty = difficulty;
-	}
-
-	public int getDifficulty(){
-		return difficulty;
-	}
-
-	public void setDefense(int defense){
-		this.defense = defense;
-	}
-
-	public int getDefense(){
-		return defense;
-	}
-
-	public void setAttack(int attack){
-		this.attack = attack;
-	}
-
-	public int getAttack(){
-		return attack;
-	}
 }
