@@ -1,4 +1,4 @@
-package com.codecool.league.dao.newsDao;
+package com.codecool.league.dao.fetch.newsDao;
 
 import com.codecool.league.model.news.NewsModel;
 import java.util.List;
