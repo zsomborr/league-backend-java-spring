@@ -1,16 +1,15 @@
 package com.codecool.league.model.user;
 
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
+@Builder
 public class UserModel {
     private String email;
     private String password;
-
-    public UserModel(String email, String password){
-        this.email=email;
-        this.password=password;
-    }
-
-    public String getEmail(){return this.email;}
-
-    public String getPassword(){return this.password;}
-
 }

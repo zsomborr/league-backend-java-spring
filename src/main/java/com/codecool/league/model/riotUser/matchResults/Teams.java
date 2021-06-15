@@ -1,7 +1,15 @@
 package com.codecool.league.model.riotUser.matchResults;
 
 import com.google.gson.annotations.SerializedName;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
+@Builder
 public class Teams {
 
 	@SerializedName("teamId")
@@ -9,20 +17,4 @@ public class Teams {
 
 	@SerializedName("win")
 	private String win;
-
-	public void setTeamId(int teamId){
-		this.teamId = teamId;
-	}
-
-	public int getTeamId(){
-		return teamId;
-	}
-
-	public void setWin(String win){
-		this.win = win;
-	}
-
-	public String getWin(){
-		return win;
-	}
 }
