@@ -15,6 +15,7 @@ import lombok.NoArgsConstructor;
 public class ChampionModel {
 
 	@SerializedName("stats")
+	@Embedded
 	private Stats stats;
 
 	@SerializedName("partype")
@@ -24,11 +25,14 @@ public class ChampionModel {
 	private String name;
 
 	@SerializedName("id")
+	@Id
 	private String id;
 
 	@SerializedName("title")
 	private String title;
 
+	@Lob
+	@Column
 	@SerializedName("blurb")
 	private String blurb;
 
