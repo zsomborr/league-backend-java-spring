@@ -1,11 +1,12 @@
 package com.codecool.league.model.champions;
 
 import com.google.gson.annotations.SerializedName;
-import lombok.*;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
-import java.util.LinkedHashSet;
 import java.util.Map;
-import java.util.Set;
 
 @Data
 @NoArgsConstructor

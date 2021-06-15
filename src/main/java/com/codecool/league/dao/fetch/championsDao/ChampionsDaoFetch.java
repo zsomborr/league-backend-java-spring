@@ -1,12 +1,12 @@
-package com.codecool.league.dao.championsDao;
+package com.codecool.league.dao.fetch.championsDao;
 
-import com.codecool.league.model.champions.ChampionsDataModel;
 import com.codecool.league.model.champions.ChampionModel;
+import com.codecool.league.model.champions.ChampionsDataModel;
 import com.codecool.league.util.Util;
 import com.google.gson.Gson;
 
 import java.io.IOException;
-import java.util.*;
+import java.util.Map;
 import java.util.stream.Collectors;
 
 public class ChampionsDaoFetch implements ChampionsDao {
@@ -26,7 +26,7 @@ public class ChampionsDaoFetch implements ChampionsDao {
     }
 
     private ChampionsDataModel createChampions(String championList) {
-        return new  Gson().fromJson(championList , ChampionsDataModel.class);
+        return new Gson().fromJson(championList , ChampionsDataModel.class);
     }
 
     @Override
