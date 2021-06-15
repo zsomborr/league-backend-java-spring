@@ -1,9 +1,9 @@
 package com.codecool.league.service;
 
-import com.codecool.league.dao.riotUserDetailsDao.RiotUserDetailsDao;
+import com.codecool.league.dao.fetch.riotUserDetailsDao.RiotUserDetailsDao;
+import com.codecool.league.model.riotUser.RiotUserDetailModel;
 import com.codecool.league.model.riotUser.matchHistory.MatchHistoryModel;
 import com.codecool.league.model.riotUser.matchHistory.MatchModel;
-import com.codecool.league.model.riotUser.RiotUserDetailModel;
 import com.codecool.league.model.riotUser.matchResults.MatchResultModel;
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -12,9 +12,9 @@ import java.util.List;
 
 public class RiotUserService {
 
-    RiotUserDetailsDao riotUserDetailsDao;
-    RiotUserDetailModel user;
-    MatchHistoryModel matchHistory;
+    private RiotUserDetailsDao riotUserDetailsDao;
+    private RiotUserDetailModel user;
+    private MatchHistoryModel matchHistory;
 
 
     @Autowired
