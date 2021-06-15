@@ -10,7 +10,8 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-public class Stats{
+@Embeddable
+public class Stats {
 
 	@SerializedName("mpregen")
 	private double mpregen;

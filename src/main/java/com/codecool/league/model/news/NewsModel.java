@@ -16,6 +16,7 @@ public class NewsModel{
 	private String timeAgo;
 
 	@SerializedName("id")
+	@Id
 	private int id;
 
 	@SerializedName("title")

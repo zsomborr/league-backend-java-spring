@@ -6,11 +6,18 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
 public class RiotUserDetailModel {
+
+    @GeneratedValue
+    @Id
+    private Long id;
 
     @SerializedName("accountId")
     private String accountId;

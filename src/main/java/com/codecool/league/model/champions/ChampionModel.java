@@ -8,10 +8,13 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import javax.persistence.*;
+
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
+@Entity
 public class ChampionModel {
 
 	@SerializedName("stats")
@@ -42,10 +45,12 @@ public class ChampionModel {
 	@SerializedName("key")
 	private String key;
 
+	@Embedded
 	@SerializedName("info")
 	private Info info;
 
 	@SerializedName("tags")
+	@ElementCollection
 	private List<String> tags;
 
 	private Boolean free = false;
