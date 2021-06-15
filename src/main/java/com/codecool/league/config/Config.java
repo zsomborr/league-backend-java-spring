@@ -1,19 +1,16 @@
 package com.codecool.league.config;
 
-import com.codecool.league.dao.championsDao.ChampionsDao;
-import com.codecool.league.dao.championsDao.ChampionsDaoFetch;
-import com.codecool.league.dao.freeChampionsDao.FreeChampionsDao;
-import com.codecool.league.dao.freeChampionsDao.FreeChampionsDaoFetch;
-import com.codecool.league.dao.newsDao.NewsDao;
-import com.codecool.league.dao.newsDao.NewsDaoFetch;
-import com.codecool.league.dao.riotUserDetailsDao.RiotUserDetailsDao;
-import com.codecool.league.dao.riotUserDetailsDao.RiotUserDetailsDaoFetch;
+import com.codecool.league.dao.fetch.championsDao.ChampionsDao;
+import com.codecool.league.dao.fetch.championsDao.ChampionsDaoFetch;
+import com.codecool.league.dao.fetch.freeChampionsDao.FreeChampionsDao;
+import com.codecool.league.dao.fetch.freeChampionsDao.FreeChampionsDaoFetch;
+import com.codecool.league.dao.fetch.newsDao.NewsDao;
+import com.codecool.league.dao.fetch.newsDao.NewsDaoFetch;
+import com.codecool.league.dao.fetch.riotUserDetailsDao.RiotUserDetailsDao;
+import com.codecool.league.dao.fetch.riotUserDetailsDao.RiotUserDetailsDaoFetch;
 import com.codecool.league.dao.userDao.UserDao;
 import com.codecool.league.dao.userDao.UserDaoMem;
-import com.codecool.league.service.ChampionsService;
-import com.codecool.league.service.NewsService;
-import com.codecool.league.service.RiotUserService;
-import com.codecool.league.service.UserService;
+import com.codecool.league.service.*;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
@@ -52,7 +49,7 @@ public class Config {
 
     @Bean
     public ChampionsService championsService() {
-        return new ChampionsService(championsDao(), freeChampionsDao());
+        return new ChampionsService();
     }
 
     @Bean
@@ -63,5 +60,10 @@ public class Config {
     @Bean
     public RiotUserService riotUserService() {
         return new RiotUserService(riotUserDetailsDao());
+    }
+
+    @Bean
+    public ChampionsDatabaseSetupService championsDatabaseSetupService() {
+        return new ChampionsDatabaseSetupService(championsDao(), freeChampionsDao());
     }
 }
