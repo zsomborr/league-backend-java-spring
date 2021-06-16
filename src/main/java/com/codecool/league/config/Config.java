@@ -8,8 +8,6 @@ import com.codecool.league.dao.fetch.newsDao.NewsDao;
 import com.codecool.league.dao.fetch.newsDao.NewsDaoFetch;
 import com.codecool.league.dao.fetch.riotUserDetailsDao.RiotUserDetailsDao;
 import com.codecool.league.dao.fetch.riotUserDetailsDao.RiotUserDetailsDaoFetch;
-import com.codecool.league.dao.userDao.UserDao;
-import com.codecool.league.dao.userDao.UserDaoMem;
 import com.codecool.league.service.*;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -20,11 +18,6 @@ public class Config {
     @Bean
     public NewsDao newsDao() {
         return new NewsDaoFetch();
-    }
-
-    @Bean
-    public UserDao userDao() {
-        return new UserDaoMem();
     }
 
     @Bean
@@ -65,5 +58,10 @@ public class Config {
     @Bean
     public ChampionsDatabaseSetupService championsDatabaseSetupService() {
         return new ChampionsDatabaseSetupService(championsDao(), freeChampionsDao());
+    }
+
+    @Bean
+    public FavouriteService favouriteService() {
+        return new FavouriteService();
     }
 }

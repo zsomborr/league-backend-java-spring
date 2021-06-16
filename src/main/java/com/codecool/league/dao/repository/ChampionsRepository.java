@@ -8,4 +8,6 @@ import java.util.List;
 
 public interface ChampionsRepository extends JpaRepository<ChampionModel, Long> {
     List<ChampionModel> findAllByTags(String tag);
+
+    List<ChampionModel> findAllByKeyIn(List<String> favouriteChampionIds);
 }
