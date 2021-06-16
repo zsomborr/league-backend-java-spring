@@ -8,7 +8,7 @@ import java.util.List;
 
 public class NewsService {
 
-    private NewsDao newsDao;
+    private final NewsDao newsDao;
 
     @Autowired
     public NewsService(NewsDao newsDao) {
