@@ -1,6 +1,6 @@
 package com.codecool.league.controller;
 
-import com.codecool.league.model.user.UserModel;
+import com.codecool.league.dto.UserDto;
 import com.codecool.league.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -20,12 +20,12 @@ public class UserController {
     }
 
     @PostMapping("/login")
-    public Boolean validateLogin(@RequestBody UserModel userModel) {
-        return userService.validateLogin(userModel);
+    public Boolean validateLogin(@RequestBody UserDto userDto) {
+        return userService.validateLogin(userDto);
     }
 
     @PostMapping("/register")
-    public Boolean registerUser(@RequestBody UserModel userModel) {
-        return userService.registerUser(userModel);
+    public Boolean registerUser(@RequestBody UserDto userDto) {
+        return userService.registerUser(userDto);
     }
 }

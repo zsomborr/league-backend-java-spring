@@ -26,7 +26,8 @@ public class ChampionsDatabaseSetupService {
         this.freeChampionsDao = freeChampionsDao;
     }
 
-    @Scheduled(initialDelay=0, fixedRate = DAY_IN_SECONDS)
+    @Scheduled(fixedRate = DAY_IN_SECONDS)
+
     public void updateChampions() {
         ChampionsDataModel champions = championsDao.getAllChampion();
         championsRepository.saveAll(new ArrayList<>(mergeChampionsAndFreeData(champions).getData()
