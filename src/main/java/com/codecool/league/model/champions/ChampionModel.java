@@ -54,4 +54,6 @@ public class ChampionModel {
 	private List<String> tags;
 
 	private Boolean free = false;
+
+	private Boolean favourite = false;
 }
