@@ -21,5 +21,6 @@ public class UserModel {
     private Long id;
 
     private String email;
-    private String password;
+    private byte[] password;
+    private byte[] salt;
 }
