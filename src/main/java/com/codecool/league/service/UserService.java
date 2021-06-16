@@ -2,14 +2,17 @@ package com.codecool.league.service;
 
 import com.codecool.league.dao.repository.UserRepository;
 import com.codecool.league.dto.UserDto;
+
 import com.codecool.league.model.user.UserModel;
 import org.springframework.beans.factory.annotation.Autowired;
+
 
 
 import static com.codecool.league.util.Util.generateSalt;
 import static com.codecool.league.util.Util.hashAndSaltPassword;
 
 public class UserService {
+
 
     @Autowired
     private UserRepository userRepository;
