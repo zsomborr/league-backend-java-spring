@@ -11,6 +11,7 @@ public class RiotUserDetailsDaoFetch implements RiotUserDetailsDao {
     private final String RIOTUSER_INFO_ENDPOINT = "https://eun1.api.riotgames.com/lol/summoner/v4/summoners/by-name/"; // + username
     private final String MATCH_HISTORY_ENDPOINT = "https://eun1.api.riotgames.com/lol/match/v4/matchlists/by-account/"; // + accoundId
     private final String MATCH_RESULT_ENDPOINT = "https://eun1.api.riotgames.com/lol/match/v4/matches/"; // + matchId
+
     @Override
     public RiotUserDetailModel getUserInfo(String userName) {
         RiotUserDetailModel userDetail = null;

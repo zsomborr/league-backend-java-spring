@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.*;
 public class ChampionsController {
 
     private final ChampionsService championsService;
-    private Gson gson;
+    private final Gson gson;
 
     @Autowired
     public ChampionsController(ChampionsService championsService) {
@@ -26,5 +26,5 @@ public class ChampionsController {
     @GetMapping("/champions/{tag}")
     public String getChampionsByTag(@PathVariable("tag") String tag) {
         return gson.toJson(championsService.getChampionsByTag(tag));
-        }
+    }
 }

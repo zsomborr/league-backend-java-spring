@@ -12,7 +12,7 @@ import java.util.List;
 
 public class RiotUserService {
 
-    private RiotUserDetailsDao riotUserDetailsDao;
+    private final RiotUserDetailsDao riotUserDetailsDao;
     private RiotUserDetailModel user;
     private MatchHistoryModel matchHistory;
 

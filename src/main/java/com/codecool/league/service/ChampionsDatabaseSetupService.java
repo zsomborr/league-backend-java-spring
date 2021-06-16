@@ -15,8 +15,8 @@ public class ChampionsDatabaseSetupService {
     @Autowired
     private ChampionsRepository championsRepository;
 
-    private ChampionsDao championsDao;
-    private FreeChampionsDao freeChampionsDao;
+    private final ChampionsDao championsDao;
+    private final FreeChampionsDao freeChampionsDao;
 
     private final int DAY_IN_SECONDS = 86400000;
 
@@ -27,7 +27,6 @@ public class ChampionsDatabaseSetupService {
     }
 
     @Scheduled(fixedRate = DAY_IN_SECONDS)
-
     public void updateChampions() {
         ChampionsDataModel champions = championsDao.getAllChampion();
         championsRepository.saveAll(new ArrayList<>(mergeChampionsAndFreeData(champions).getData()
@@ -37,9 +36,7 @@ public class ChampionsDatabaseSetupService {
     private ChampionsDataModel mergeChampionsAndFreeData(ChampionsDataModel allChampion) {
         List<Integer> freeChampionIds = freeChampionsDao.getFreeChampions().getFreeChampionIds();
         allChampion.getData()
-                .forEach((key, champion) -> {
-                    champion.setFree(freeChampionIds.contains(Integer.parseInt(champion.getKey())));
-                });
+                .forEach((key, champion) -> champion.setFree(freeChampionIds.contains(Integer.parseInt(champion.getKey()))));
         return allChampion;
     }
 }

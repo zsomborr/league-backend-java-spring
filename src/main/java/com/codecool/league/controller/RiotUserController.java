@@ -3,17 +3,15 @@ package com.codecool.league.controller;
 import com.codecool.league.service.RiotUserService;
 import com.google.gson.Gson;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @CrossOrigin
 @RestController
+@RequestMapping("/riot")
 public class RiotUserController {
 
     private final RiotUserService riotUserService;
-    private Gson gson;
+    private final Gson gson;
 
     @Autowired
     public RiotUserController(RiotUserService riotUserService) {
@@ -21,7 +19,7 @@ public class RiotUserController {
         this.gson = new Gson();
     }
 
-    @GetMapping("/user/{userName}")
+    @GetMapping("/{userName}")
     public String getUserInfo(@PathVariable("userName") String userName) {
         return gson.toJson(riotUserService.getUserInfo(userName));
     }
