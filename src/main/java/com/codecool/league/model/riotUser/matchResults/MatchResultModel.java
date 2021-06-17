@@ -1,10 +1,7 @@
 package com.codecool.league.model.riotUser.matchResults;
 
 import com.google.gson.annotations.SerializedName;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import java.util.List;
 
@@ -20,6 +17,7 @@ public class MatchResultModel{
 	@SerializedName("gameDuration")
 	private int gameDuration;
 
+	@Singular
 	@SerializedName("teams")
 	private List<Teams> teams;
 

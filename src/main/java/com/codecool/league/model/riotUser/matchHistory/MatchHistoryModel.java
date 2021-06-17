@@ -1,10 +1,7 @@
 package com.codecool.league.model.riotUser.matchHistory;
 
 import com.google.gson.annotations.SerializedName;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import java.util.List;
 
@@ -23,6 +20,7 @@ public class MatchHistoryModel {
 	@SerializedName("endIndex")
 	private int endIndex;
 
+	@Singular
 	@SerializedName("matches")
 	private List<MatchModel> matches;
 }
