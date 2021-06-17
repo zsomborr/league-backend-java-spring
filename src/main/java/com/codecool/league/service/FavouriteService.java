@@ -8,6 +8,7 @@ import com.codecool.league.model.champions.ChampionsDataModel;
 import com.codecool.league.model.user.UserModel;
 import org.springframework.beans.factory.annotation.Autowired;
 
+import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.function.Function;
@@ -41,38 +42,44 @@ public class FavouriteService {
     }
 
     public ChampionsDataModel getFavouriteChampionsForUser(String email) {
-        UserModel user = userRepository.findDistinctByEmail(email);
-        List<String> favouriteChampionIds = user.getFavouriteChampionIds();
+        List<String> favouriteChampionIds = getFavouriteChampionIds(email);
         List<ChampionModel> championModels = championsRepository.findAllByKeyIn(favouriteChampionIds);
 
-        Map<String, ChampionModel> championsMap = championModels.stream()
-                .collect(Collectors.toMap(ChampionModel::getId, Function.identity()));
-        var championsDataModel = new ChampionsDataModel();
-        championsDataModel.setData(championsMap);
-        return championsDataModel;
+        return getChampionsDataModel(favouriteChampionIds, championModels);
     }
 
     public ChampionsDataModel getAllChampionsWithFavouriteField(String email) {
+        List<String> favouriteChampionIds = getFavouriteChampionIds(email);
         List<ChampionModel> championModels = championsRepository.findAll();
-        return getChampionsDataModel(email, championModels);
+
+        return getChampionsDataModel(favouriteChampionIds, championModels);
     }
 
     public ChampionsDataModel getFilteredChampionsWithFavouriteField(String email, String tag) {
+        List<String> favouriteChampionIds = getFavouriteChampionIds(email);
         List<ChampionModel> championModels = championsRepository.findAllByTags(tag);
-        return getChampionsDataModel(email, championModels);
+
+        return getChampionsDataModel(favouriteChampionIds, championModels);
     }
 
-    private ChampionsDataModel getChampionsDataModel(String email, List<ChampionModel> championModels) {
-        UserModel user = userRepository.findDistinctByEmail(email);
-        List<String> favouriteChampionIds = user.getFavouriteChampionIds();
-
+    private ChampionsDataModel getChampionsDataModel(List<String> favouriteChampionIds, List<ChampionModel> championModels) {
         Map<String, ChampionModel> championsMap = championModels.stream()
-                .collect(Collectors.toMap(ChampionModel::getId, Function.identity()));
-
+                .collect(Collectors.toMap(
+                        ChampionModel::getId,
+                        Function.identity(),
+                        (left, right) -> left,
+                        LinkedHashMap::new));
         championsMap
                 .forEach((key, champion) -> champion.setFavourite(favouriteChampionIds.contains(champion.getKey())));
         var championsDataModel = new ChampionsDataModel();
         championsDataModel.setData(championsMap);
+
         return championsDataModel;
+    }
+
+    private List<String> getFavouriteChampionIds(String email) {
+        UserModel user = userRepository.findDistinctByEmail(email);
+
+        return user.getFavouriteChampionIds();
     }
 }
