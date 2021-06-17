@@ -15,10 +15,6 @@ import javax.persistence.Id;
 @Builder
 public class RiotUserDetailModel {
 
-    @GeneratedValue
-    @Id
-    private Long id;
-
     @SerializedName("accountId")
     private String accountId;
 

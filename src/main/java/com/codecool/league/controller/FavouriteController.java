@@ -35,7 +35,7 @@ public class FavouriteController {
         return gson.toJson(favouriteService.getAllChampionsWithFavouriteField(email));
     }
 
-    @GetMapping("/champions/{tag}")
+    @PostMapping("/champions/{tag}")
     public String getFilteredChampionsWithFavouriteField(@RequestBody String email, @PathVariable String tag) {
         return gson.toJson(favouriteService.getFilteredChampionsWithFavouriteField(email, tag));
     }
