@@ -3,9 +3,11 @@ package com.codecool.league.service;
 import com.codecool.league.dao.fetch.newsDao.NewsDao;
 import com.codecool.league.model.news.NewsModel;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
 import java.util.List;
 
+@Component
 public class NewsService {
 
     private final NewsDao newsDao;

@@ -7,9 +7,11 @@ import com.codecool.league.model.riotUser.matchResults.MatchResultModel;
 import com.codecool.league.model.riotUser.matchResults.Teams;
 import com.codecool.league.util.Util;
 import com.google.gson.Gson;
+import org.springframework.stereotype.Component;
 
 import java.io.IOException;
 
+@Component
 public class RiotUserDetailsDaoFetch implements RiotUserDetailsDao {
 
     private final String RIOTUSER_INFO_ENDPOINT = "https://eun1.api.riotgames.com/lol/summoner/v4/summoners/by-name/"; // + username

@@ -5,10 +5,12 @@ import com.codecool.league.dto.UserDto;
 
 import com.codecool.league.model.user.UserModel;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import static com.codecool.league.util.Util.generateSalt;
 import static com.codecool.league.util.Util.hashAndSaltPassword;
 
+@Service
 public class UserService {
 
     @Autowired

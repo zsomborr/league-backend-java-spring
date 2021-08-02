@@ -4,11 +4,13 @@ import com.codecool.league.model.champions.ChampionModel;
 import com.codecool.league.model.champions.ChampionsDataModel;
 import com.codecool.league.util.Util;
 import com.google.gson.Gson;
+import org.springframework.stereotype.Component;
 
 import java.io.IOException;
 import java.util.Map;
 import java.util.stream.Collectors;
 
+@Component
 public class ChampionsDaoFetch implements ChampionsDao {
 
     private final String ENDPOINT = "http://ddragon.leagueoflegends.com/cdn/11.10.1/data/en_US/champion.json";

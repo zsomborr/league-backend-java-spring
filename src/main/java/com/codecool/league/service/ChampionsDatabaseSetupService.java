@@ -6,10 +6,12 @@ import com.codecool.league.dao.repository.ChampionsRepository;
 import com.codecool.league.model.champions.ChampionsDataModel;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.scheduling.annotation.Scheduled;
+import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
 
+@Service
 public class ChampionsDatabaseSetupService {
 
     @Autowired
@@ -18,7 +20,7 @@ public class ChampionsDatabaseSetupService {
     private final ChampionsDao championsDao;
     private final FreeChampionsDao freeChampionsDao;
 
-    private final int DAY_IN_SECONDS = 86400000;
+    private static final int DAY_IN_SECONDS = 86400000;
 
     @Autowired
     public ChampionsDatabaseSetupService(ChampionsDao championsDao, FreeChampionsDao freeChampionsDao) {

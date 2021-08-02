@@ -6,10 +6,12 @@ import com.codecool.league.model.riotUser.matchHistory.MatchHistoryModel;
 import com.codecool.league.model.riotUser.matchHistory.MatchModel;
 import com.codecool.league.model.riotUser.matchResults.MatchResultModel;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
 
+@Service
 public class RiotUserService {
 
     private final RiotUserDetailsDao riotUserDetailsDao;
