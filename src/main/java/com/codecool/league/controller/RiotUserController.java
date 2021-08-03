@@ -1,37 +1,39 @@
 package com.codecool.league.controller;
 
+import com.codecool.league.model.riotUser.RiotUserDetailModel;
+import com.codecool.league.model.riotUser.matchHistory.MatchModel;
+import com.codecool.league.model.riotUser.matchResults.MatchResultModel;
 import com.codecool.league.service.RiotUserService;
-import com.google.gson.Gson;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
-@CrossOrigin
+import java.util.List;
+
+@CrossOrigin(origins = {"http://localhost:3000"})
 @RestController
 @RequestMapping("/riot")
 public class RiotUserController {
 
     private final RiotUserService riotUserService;
-    private final Gson gson;
 
     @Autowired
     public RiotUserController(RiotUserService riotUserService) {
         this.riotUserService = riotUserService;
-        this.gson = new Gson();
     }
 
     @GetMapping("/{userName}")
-    public String getUserInfo(@PathVariable("userName") String userName) {
-        return gson.toJson(riotUserService.getUserInfo(userName));
+    public RiotUserDetailModel getUserInfo(@PathVariable("userName") String userName) {
+        return riotUserService.getUserInfo(userName);
     }
 
     @GetMapping("/matches")
-    public String getMatchHistory() {
-        return gson.toJson(riotUserService.getMatchHistory());
+    public List<MatchModel> getMatchHistory() {
+        return riotUserService.getMatchHistory();
     }
 
     @GetMapping("/results")
-    public String getMatchResults() {
-        return gson.toJson(riotUserService.getMatchDetails());
+    public List<MatchResultModel> getMatchResults() {
+        return riotUserService.getMatchDetails();
     }
 
 }
