@@ -3,12 +3,13 @@ package com.codecool.league.controller;
 import com.codecool.league.dto.UserDto;
 import com.codecool.league.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
-@CrossOrigin
+@CrossOrigin(origins = {"http://localhost:3000"})
 @RestController
 public class UserController {
 
@@ -20,7 +21,7 @@ public class UserController {
     }
 
     @PostMapping("/login")
-    public Boolean validateLogin(@RequestBody UserDto userDto) {
+    public ResponseEntity validateLogin(@RequestBody UserDto userDto) {
         return userService.validateLogin(userDto);
     }
 
