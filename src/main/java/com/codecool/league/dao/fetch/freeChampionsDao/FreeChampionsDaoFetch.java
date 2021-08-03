@@ -1,7 +1,7 @@
 package com.codecool.league.dao.fetch.freeChampionsDao;
 
 import com.codecool.league.model.freeChampions.FreeChampionsModel;
-import com.codecool.league.util.Util;
+import com.codecool.league.util.ApiResponseUtil;
 import com.google.gson.Gson;
 import org.springframework.stereotype.Component;
 
@@ -14,7 +14,7 @@ public class FreeChampionsDaoFetch implements FreeChampionsDao {
     public FreeChampionsModel getFreeChampions() {
         FreeChampionsModel freeChampions = null;
         try {
-            String freeChampionsFromApi = Util.getRiotApiJsonResponse(FREE_CHAMPIONS_ENDPOINT);
+            String freeChampionsFromApi = ApiResponseUtil.getRiotApiJsonResponse(FREE_CHAMPIONS_ENDPOINT);
             freeChampions = new Gson().fromJson(freeChampionsFromApi, FreeChampionsModel.class);
         } catch (Exception e) {
             e.printStackTrace();

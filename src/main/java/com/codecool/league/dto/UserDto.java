@@ -1,5 +1,6 @@
 package com.codecool.league.dto;
 
+import com.codecool.league.model.user.Role;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -12,6 +13,7 @@ import lombok.NoArgsConstructor;
 @Builder
 public class UserDto {
 
-    private String email;
+    private String username;
     private String password;
+    private Role role;
 }

@@ -2,7 +2,7 @@ package com.codecool.league.dao.fetch.championsDao;
 
 import com.codecool.league.model.champions.ChampionModel;
 import com.codecool.league.model.champions.ChampionsDataModel;
-import com.codecool.league.util.Util;
+import com.codecool.league.util.ApiResponseUtil;
 import com.google.gson.Gson;
 import org.springframework.stereotype.Component;
 
@@ -49,6 +49,6 @@ public class ChampionsDaoFetch implements ChampionsDao {
     }
 
     private String fetchChampions() throws IOException {
-        return Util.getRiotApiJsonResponse(ENDPOINT);
+        return ApiResponseUtil.getRiotApiJsonResponse(ENDPOINT);
     }
 }

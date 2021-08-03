@@ -19,9 +19,11 @@ public class UserModel {
     @Id
     private Long id;
 
-    private String email;
-    private byte[] password;
-    private byte[] salt;
+    @Enumerated(EnumType.STRING)
+    private Role role;
+
+    private String username;
+    private String password;
 
     @ElementCollection
     private List<String> favouriteChampionIds;

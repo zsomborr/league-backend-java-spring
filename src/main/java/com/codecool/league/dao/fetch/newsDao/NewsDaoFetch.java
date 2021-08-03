@@ -1,7 +1,7 @@
 package com.codecool.league.dao.fetch.newsDao;
 
 import com.codecool.league.model.news.NewsModel;
-import com.codecool.league.util.Util;
+import com.codecool.league.util.ApiResponseUtil;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 import org.springframework.stereotype.Component;
@@ -19,7 +19,7 @@ public class NewsDaoFetch implements NewsDao {
     public List<NewsModel> getNews(int pageNumber) {
         List<NewsModel> news = new ArrayList<>();
         try {
-            String newsFromApi = Util.getRiotApiJsonResponse(NEWS_API + pageNumber +".json");
+            String newsFromApi = ApiResponseUtil.getRiotApiJsonResponse(NEWS_API + pageNumber +".json");
             Type newsModelType = new TypeToken<ArrayList<NewsModel>>(){}.getType();
             news = new Gson().fromJson(newsFromApi, newsModelType);
         } catch (Exception e) {
