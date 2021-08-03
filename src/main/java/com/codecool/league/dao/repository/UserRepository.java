@@ -3,10 +3,10 @@ package com.codecool.league.dao.repository;
 import com.codecool.league.model.user.UserModel;
 import org.springframework.data.jpa.repository.JpaRepository;
 
+import java.util.Optional;
+
 
 public interface UserRepository extends JpaRepository<UserModel, Long> {
-
-    UserModel findDistinctByEmail(String email);
-    UserModel findDistinctByEmailAndPassword(String email, byte[] password);
-
+    Optional<UserModel> findDistinctByUsername(String username);
+    Optional<UserModel> findDistinctByUsernameAndPassword(String username, String password);
 }
