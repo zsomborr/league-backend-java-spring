@@ -1,42 +1,52 @@
 package com.codecool.league.controller;
 
-import com.codecool.league.dto.UserFavouriteChampionDto;
+import com.codecool.league.model.champions.ChampionsDataModel;
+import com.codecool.league.security.JwtTokenServices;
 import com.codecool.league.service.FavouriteService;
-import com.google.gson.Gson;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+import javax.servlet.http.HttpServletRequest;
 
-@CrossOrigin
+@CrossOrigin(origins = {"http://localhost:3000"})
 @RestController
 @RequestMapping("/user")
 public class FavouriteController {
 
     private final FavouriteService favouriteService;
-    private final Gson gson;
+    private final JwtTokenServices jwtTokenServices;
 
     @Autowired
-    public FavouriteController(FavouriteService favouriteService) {
+    public FavouriteController(FavouriteService favouriteService, JwtTokenServices jwtTokenServices) {
         this.favouriteService = favouriteService;
-        this.gson = new Gson();
+        this.jwtTokenServices = jwtTokenServices;
     }
 
-    @PostMapping("/update-favourite")
-    public Boolean updateUser(@RequestBody UserFavouriteChampionDto userFavouriteChampionDto) {
-        return favouriteService.updateFavouriteChampions(userFavouriteChampionDto);
+    @PutMapping("/update-favourite")
+    public Boolean updateUser(@RequestBody String championId, HttpServletRequest req) {
+        String username = getUsernameFromRequest(req);
+        return favouriteService.updateFavouriteChampions(username, championId);
     }
 
-    @PostMapping("/favourites")
-    public String getFavourites(@RequestBody String email) {
-        return gson.toJson(favouriteService.getFavouriteChampionsForUser(email));
+    @GetMapping("/favourites")
+    public ChampionsDataModel getFavourites(HttpServletRequest req) {
+        String username = getUsernameFromRequest(req);
+        return favouriteService.getFavouriteChampionsForUser(username);
     }
 
-    @PostMapping("/champions")
-    public String getAllChampionsWithFavouriteField(@RequestBody String email) {
-        return gson.toJson(favouriteService.getAllChampionsWithFavouriteField(email));
+    @GetMapping("/champions")
+    public ChampionsDataModel getAllChampionsWithFavouriteField(HttpServletRequest req) {
+        String username = getUsernameFromRequest(req);
+        return favouriteService.getAllChampionsWithFavouriteField(username);
     }
 
-    @PostMapping("/champions/{tag}")
-    public String getFilteredChampionsWithFavouriteField(@RequestBody String email, @PathVariable String tag) {
-        return gson.toJson(favouriteService.getFilteredChampionsWithFavouriteField(email, tag));
+    @GetMapping("/champions/{tag}")
+    public ChampionsDataModel getFilteredChampionsWithFavouriteField(HttpServletRequest req, @PathVariable String tag) {
+        String username = getUsernameFromRequest(req);
+        return favouriteService.getFilteredChampionsWithFavouriteField(username, tag);
+    }
+
+    private String getUsernameFromRequest(HttpServletRequest req) {
+        String token = jwtTokenServices.getTokenFromRequest(req);
+        return jwtTokenServices.getUsernameFromToken(token);
     }
 }
