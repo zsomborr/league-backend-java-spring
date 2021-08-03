@@ -5,7 +5,7 @@ import com.codecool.league.model.riotUser.matchHistory.MatchHistoryModel;
 import com.codecool.league.model.riotUser.matchHistory.MatchModel;
 import com.codecool.league.model.riotUser.matchResults.MatchResultModel;
 import com.codecool.league.model.riotUser.matchResults.Teams;
-import com.codecool.league.util.Util;
+import com.codecool.league.util.ApiResponseUtil;
 import com.google.gson.Gson;
 import org.springframework.stereotype.Component;
 
@@ -21,7 +21,7 @@ public class RiotUserDetailsDaoFetch implements RiotUserDetailsDao {
     @Override
     public RiotUserDetailModel getUserInfo(String userName) {
         try {
-            String userDetailFromApi = Util.getRiotApiJsonResponse(RIOTUSER_INFO_ENDPOINT + userName);
+            String userDetailFromApi = ApiResponseUtil.getRiotApiJsonResponse(RIOTUSER_INFO_ENDPOINT + userName);
             return new Gson().fromJson(userDetailFromApi, RiotUserDetailModel.class);
         } catch (IOException e) {
             System.out.println("No such user");
@@ -35,7 +35,7 @@ public class RiotUserDetailsDaoFetch implements RiotUserDetailsDao {
     @Override
     public MatchHistoryModel getMatchHistory(String accountId) {
         try {
-            String matchHistoryFromApi = Util.getRiotApiJsonResponse(MATCH_HISTORY_ENDPOINT + accountId + "?endIndex=10");
+            String matchHistoryFromApi = ApiResponseUtil.getRiotApiJsonResponse(MATCH_HISTORY_ENDPOINT + accountId + "?endIndex=10");
             return new Gson().fromJson(matchHistoryFromApi, MatchHistoryModel.class);
         } catch (IOException e) {
             System.out.println("No such match history");
@@ -51,7 +51,7 @@ public class RiotUserDetailsDaoFetch implements RiotUserDetailsDao {
     @Override
     public MatchResultModel getMatchResult(Long matchId) {
         try {
-            String matchDetailFromApi = Util.getRiotApiJsonResponse(MATCH_RESULT_ENDPOINT + matchId);
+            String matchDetailFromApi = ApiResponseUtil.getRiotApiJsonResponse(MATCH_RESULT_ENDPOINT + matchId);
             return new Gson().fromJson(matchDetailFromApi, MatchResultModel.class);
         } catch (IOException e) {
             System.out.println("No such match result");
