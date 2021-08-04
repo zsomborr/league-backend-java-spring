@@ -14,7 +14,6 @@ import org.springframework.security.crypto.factory.PasswordEncoderFactories;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
 import com.codecool.league.model.user.UserModel;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.HashMap;
@@ -29,7 +28,6 @@ public class UserService {
     private final AuthenticationManager authenticationManager;
     private final JwtTokenServices jwtTokenServices;
 
-    @Autowired
     public UserService(UserRepository userRepository, AuthenticationManager authenticationManager, JwtTokenServices jwtTokenServices) {
         this.authenticationManager = authenticationManager;
         this.userRepository = userRepository;
@@ -65,6 +63,7 @@ public class UserService {
             UserModel userModel = UserModel.builder()
                     .username(username)
                     .password(passwordEncoder.encode(userDto.getPassword()))
+                    .role(Role.USER)
                     .build();
 
             userRepository.save(userModel);
