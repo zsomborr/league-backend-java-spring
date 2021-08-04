@@ -79,9 +79,9 @@ public class JwtTokenServices {
     Authentication parseUserFromTokenInfo(String token) throws UsernameNotFoundException {
         Claims body = Jwts.parser().setSigningKey(secretKey).parseClaimsJws(token).getBody();
         String username = body.getSubject();
-        Role role = (Role) body.get(roleFieldName);
+        String role = (String) body.get(roleFieldName);
         List<SimpleGrantedAuthority> authorities = new LinkedList<>();
-        authorities.add(new SimpleGrantedAuthority(role.name()));
+        authorities.add(new SimpleGrantedAuthority(role));
         return new UsernamePasswordAuthenticationToken(username, "", authorities);
     }
 
