@@ -1,4 +1,4 @@
-package com.codecool.league.dao.fetch.freeChampionsDao;
+package com.codecool.league.service.fetch.freeChampionsFetch;
 
 import com.codecool.league.model.freeChampions.FreeChampionsModel;
 import com.codecool.league.util.ApiResponseUtil;
@@ -6,7 +6,7 @@ import com.google.gson.Gson;
 import org.springframework.stereotype.Component;
 
 @Component
-public class FreeChampionsDaoFetch implements FreeChampionsDao {
+public class FreeChampionsFetchService implements FreeChampionsFetch {
 
     private final String FREE_CHAMPIONS_ENDPOINT = "https://eun1.api.riotgames.com/lol/platform/v3/champion-rotations";
 

@@ -1,4 +1,4 @@
-package com.codecool.league.dao.fetch.riotUserDetailsDao;
+package com.codecool.league.service.fetch.riotUserDetailsFetch;
 
 import com.codecool.league.model.riotUser.RiotUserDetailModel;
 import com.codecool.league.model.riotUser.matchHistory.MatchHistoryModel;
@@ -12,7 +12,7 @@ import org.springframework.stereotype.Component;
 import java.io.IOException;
 
 @Component
-public class RiotUserDetailsDaoFetch implements RiotUserDetailsDao {
+public class RiotUserDetailsFetchService implements RiotUserDetailsFetch {
 
     private final String RIOTUSER_INFO_ENDPOINT = "https://eun1.api.riotgames.com/lol/summoner/v4/summoners/by-name/"; // + username
     private final String MATCH_HISTORY_ENDPOINT = "https://eun1.api.riotgames.com/lol/match/v4/matchlists/by-account/"; // + accoundId

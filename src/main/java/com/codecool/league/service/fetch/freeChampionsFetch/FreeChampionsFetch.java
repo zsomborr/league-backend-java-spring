@@ -1,7 +1,7 @@
-package com.codecool.league.dao.fetch.freeChampionsDao;
+package com.codecool.league.service.fetch.freeChampionsFetch;
 
 import com.codecool.league.model.freeChampions.FreeChampionsModel;
 
-public interface FreeChampionsDao {
+public interface FreeChampionsFetch {
     FreeChampionsModel getFreeChampions();
 }
