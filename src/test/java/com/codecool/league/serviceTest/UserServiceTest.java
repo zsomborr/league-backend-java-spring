@@ -1,10 +1,10 @@
 package com.codecool.league.serviceTest;
 
-import com.codecool.league.dao.repository.UserRepository;
+import com.codecool.league.repository.UserRepository;
 import com.codecool.league.dto.UserDto;
 import com.codecool.league.model.user.Role;
 import com.codecool.league.model.user.UserModel;
-import com.codecool.league.service.UserService;
+import com.codecool.league.service.AuthService;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.runner.RunWith;
 import org.junit.jupiter.api.Test;
@@ -24,7 +24,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 class UserServiceTest {
 
     @Autowired
-    private UserService userService;
+    private AuthService userService;
 
     @Autowired
     private UserRepository userRepository;
