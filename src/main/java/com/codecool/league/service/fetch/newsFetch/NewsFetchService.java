@@ -1,4 +1,4 @@
-package com.codecool.league.dao.fetch.newsDao;
+package com.codecool.league.service.fetch.newsFetch;
 
 import com.codecool.league.model.news.NewsModel;
 import com.codecool.league.util.ApiResponseUtil;
@@ -11,7 +11,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Component
-public class NewsDaoFetch implements NewsDao {
+public class NewsFetchService implements NewsFetch {
 
     private final static String NEWS_API = "https://api.hnpwa.com/v0/newest/";
 

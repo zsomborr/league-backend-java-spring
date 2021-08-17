@@ -1,6 +1,6 @@
 package com.codecool.league.service;
 
-import com.codecool.league.dao.fetch.newsDao.NewsDao;
+import com.codecool.league.service.fetch.newsFetch.NewsFetch;
 import com.codecool.league.model.news.NewsModel;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -10,14 +10,14 @@ import java.util.List;
 @Component
 public class NewsService {
 
-    private final NewsDao newsDao;
+    private final NewsFetch newsFetchService;
 
     @Autowired
-    public NewsService(NewsDao newsDao) {
-        this.newsDao = newsDao;
+    public NewsService(NewsFetch newsDao) {
+        this.newsFetchService = newsDao;
     }
 
     public List<NewsModel> getNews(int pageNumber) {
-        return newsDao.getNews(pageNumber);
+        return newsFetchService.getNews(pageNumber);
     }
 }

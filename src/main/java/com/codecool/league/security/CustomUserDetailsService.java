@@ -1,6 +1,6 @@
 package com.codecool.league.security;
 
-import com.codecool.league.dao.repository.UserRepository;
+import com.codecool.league.repository.UserRepository;
 import com.codecool.league.model.user.UserModel;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.User;

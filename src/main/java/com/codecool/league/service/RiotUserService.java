@@ -1,6 +1,6 @@
 package com.codecool.league.service;
 
-import com.codecool.league.dao.fetch.riotUserDetailsDao.RiotUserDetailsDao;
+import com.codecool.league.service.fetch.riotUserDetailsFetch.RiotUserDetailsFetch;
 import com.codecool.league.model.riotUser.RiotUserDetailModel;
 import com.codecool.league.model.riotUser.matchHistory.MatchHistoryModel;
 import com.codecool.league.model.riotUser.matchHistory.MatchModel;
@@ -14,23 +14,23 @@ import java.util.List;
 @Service
 public class RiotUserService {
 
-    private final RiotUserDetailsDao riotUserDetailsDao;
+    private final RiotUserDetailsFetch riotUserDetailsFetchService;
     private RiotUserDetailModel user;
     private MatchHistoryModel matchHistory;
 
 
     @Autowired
-    public RiotUserService(RiotUserDetailsDao riotUserDetailsDao) {
-        this.riotUserDetailsDao = riotUserDetailsDao;
+    public RiotUserService(RiotUserDetailsFetch riotUserDetailsDao) {
+        this.riotUserDetailsFetchService = riotUserDetailsDao;
     }
 
     public RiotUserDetailModel getUserInfo(String userName) {
-        user = riotUserDetailsDao.getUserInfo(userName);
+        user = riotUserDetailsFetchService.getUserInfo(userName);
         return user;
     }
 
     public List<MatchModel> getMatchHistory() {
-        MatchHistoryModel matchHistory = riotUserDetailsDao.getMatchHistory(user.getAccountId());
+        MatchHistoryModel matchHistory = riotUserDetailsFetchService.getMatchHistory(user.getAccountId());
         this.matchHistory = matchHistory;
         return matchHistory.getMatches();
     }
@@ -39,7 +39,7 @@ public class RiotUserService {
         //TODO: check for user's team
         List<MatchResultModel> matchResultModels = new ArrayList<>();
         for (MatchModel matchModel : matchHistory.getMatches()) {
-            matchResultModels.add(riotUserDetailsDao.getMatchResult(matchModel.getGameId()));
+            matchResultModels.add(riotUserDetailsFetchService.getMatchResult(matchModel.getGameId()));
         }
         return matchResultModels;
     }

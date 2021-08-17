@@ -1,41 +1,38 @@
-package com.codecool.league.service;
+package com.codecool.league.controller;
 
-import com.codecool.league.dao.repository.UserRepository;
 import com.codecool.league.dto.UserDto;
 import com.codecool.league.model.user.Role;
 import com.codecool.league.security.JwtTokenServices;
+import com.codecool.league.service.AuthService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.AuthenticationException;
-import org.springframework.security.crypto.factory.PasswordEncoderFactories;
-import org.springframework.security.crypto.password.PasswordEncoder;
-
-import com.codecool.league.model.user.UserModel;
-import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.HashMap;
 import java.util.Map;
-import java.util.Optional;
 
-@Service
-public class UserService {
+@CrossOrigin(origins = {"http://localhost:3000"}, allowCredentials = "true")
+@RestController
+public class AuthController {
 
-    private final UserRepository userRepository;
-    private final PasswordEncoder passwordEncoder;
+    private final AuthService authService;
     private final AuthenticationManager authenticationManager;
     private final JwtTokenServices jwtTokenServices;
 
-    public UserService(UserRepository userRepository, AuthenticationManager authenticationManager, JwtTokenServices jwtTokenServices) {
+    @Autowired
+    public AuthController(AuthService userService, AuthenticationManager authenticationManager, JwtTokenServices jwtTokenServices) {
+        this.authService = userService;
         this.authenticationManager = authenticationManager;
-        this.userRepository = userRepository;
-        this.passwordEncoder = PasswordEncoderFactories.createDelegatingPasswordEncoder();
         this.jwtTokenServices = jwtTokenServices;
     }
 
-    public ResponseEntity validateLogin(UserDto userDto) {
+    @PostMapping(value = "/login")
+    public ResponseEntity validateLogin(@RequestBody UserDto userDto) {
         try {
             String username = userDto.getUsername();
             Authentication authentication = authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(username, userDto.getPassword()));
@@ -54,22 +51,8 @@ public class UserService {
         }
     }
 
-    public Boolean registerUser(UserDto userDto) {
-        String username = userDto.getUsername();
-        Optional<UserModel> userModelOptional = userRepository.findDistinctByUsername(username);
-
-        if (userModelOptional.isEmpty()) {
-
-            UserModel userModel = UserModel.builder()
-                    .username(username)
-                    .password(passwordEncoder.encode(userDto.getPassword()))
-                    .role(Role.USER)
-                    .build();
-
-            userRepository.save(userModel);
-
-        }
-        return userModelOptional.isEmpty();
+    @PostMapping("/register")
+    public Boolean registerUser(@RequestBody UserDto userDto) {
+        return authService.registerUser(userDto);
     }
-
 }

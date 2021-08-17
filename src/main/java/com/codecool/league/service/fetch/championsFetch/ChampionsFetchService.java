@@ -1,4 +1,4 @@
-package com.codecool.league.dao.fetch.championsDao;
+package com.codecool.league.service.fetch.championsFetch;
 
 import com.codecool.league.model.champions.ChampionModel;
 import com.codecool.league.model.champions.ChampionsDataModel;
@@ -11,7 +11,7 @@ import java.util.Map;
 import java.util.stream.Collectors;
 
 @Component
-public class ChampionsDaoFetch implements ChampionsDao {
+public class ChampionsFetchService implements ChampionsFetch {
 
     private final String ENDPOINT = "http://ddragon.leagueoflegends.com/cdn/11.10.1/data/en_US/champion.json";
 

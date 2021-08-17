@@ -1,6 +1,6 @@
 package com.codecool.league.service;
 
-import com.codecool.league.dao.repository.ChampionsRepository;
+import com.codecool.league.repository.ChampionsRepository;
 import com.codecool.league.model.champions.ChampionModel;
 import com.codecool.league.model.champions.ChampionsDataModel;
 import com.codecool.league.model.champions.ChampionsIdAndKeyDataModel;

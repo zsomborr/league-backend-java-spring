@@ -1,4 +1,4 @@
-package com.codecool.league.dao.repository;
+package com.codecool.league.repository;
 
 import com.codecool.league.model.user.UserModel;
 import org.springframework.data.jpa.repository.JpaRepository;
